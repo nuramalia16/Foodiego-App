@@ -3,6 +3,9 @@
  */
 package aplikasishop;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -23,12 +26,17 @@ import javafx.stage.Stage;
 
 public class App extends Application {
     private Stage primaryStage;
+    private List<String>selectedFoods;
+    private List<String>selectedDrinks;
+
     public static void main(String[] args) {
         launch(args);
     }
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
+        selectedFoods = new ArrayList<>();
+        selectedDrinks = new ArrayList<>();
         primaryStage.setTitle("FoodieGo");
         primaryStage.setScene(createHomePage());
         primaryStage.show();
@@ -50,7 +58,7 @@ public class App extends Application {
         VBox layout = new VBox(0);
         layout.getChildren().addAll(foodieGoView, loginButton);
         layout.setAlignment(Pos.CENTER);
-        layout.setStyle("-fx-background-color: #FAF2E9;");
+        layout.setStyle("-fx-background-color: #FAF2E9; -fx-padding:20px");
 
         BorderPane pane = new BorderPane();
         pane.setCenter(layout);
@@ -93,7 +101,7 @@ public class App extends Application {
         VBox layout = new VBox(40);
         layout.getChildren().addAll(loginTitle, usernameLabel, usernameField, passwordLabel, passwordField, loginButton, backButton);
         layout.setAlignment(Pos.CENTER);
-        layout.setStyle("-fx-background-color: #FAF2E9;");
+        layout.setStyle("-fx-background-color: #FAF2E9; -fx-padding:20px");
 
         BorderPane pane = new BorderPane();
         pane.setCenter(layout);
@@ -122,7 +130,7 @@ public class App extends Application {
         VBox layout = new VBox(20);
         layout.getChildren().addAll(categoryTitle,makanan,minuman, backButton);
         layout.setAlignment(Pos.CENTER);
-        layout.setStyle("-fx-background-color: #FAF2E9;");
+        layout.setStyle("-fx-background-color: #FAF2E9; -fx-padding:20px");
 
         BorderPane pane = new BorderPane();
         pane.setCenter(layout);
@@ -135,55 +143,52 @@ public class App extends Application {
         // Daftar makanan
         Image Burger = new Image("./Burger.png");
         ImageView burgerView = new ImageView(Burger);
-        burgerView.setFitWidth(100);
-        burgerView.setFitHeight(100);
+        burgerView.setFitWidth(75);
+        burgerView.setFitHeight(75);
+
+        Text BurgerName = new Text("Burger");
+        BurgerName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
         Text hargaBurger = new Text("Rp 25.000");
         hargaBurger.setFont(Font.font("Arial", FontWeight.BOLD, 10));
         
-        Button Burger1 = new Button("Burger");
-        Burger1.setStyle("-fx-background-color: black; -fx-text-fill: white;");
-        Burger1.setOnAction(e -> {
-            showOrderConfirmation("Burger");
-        });
         Image Hotodog = new Image("./Hotodog.png");
         ImageView hotodogView = new ImageView(Hotodog);
-        hotodogView.setFitWidth(100);
-        hotodogView.setFitHeight(100);
+        hotodogView.setFitWidth(75);
+        hotodogView.setFitHeight(75);
+
+        Text HotDogName = new Text("Hot Dog");
+        HotDogName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
         Text hargaHotDog = new Text("Rp 20.000");
         hargaHotDog.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
-        Button Hotogod1  = new Button("Hot Dog");
-        Hotogod1.setStyle("-fx-background-color: black; -fx-text-fill: white;");
-        Hotogod1.setOnAction(e -> {
-            showOrderConfirmation("Hot Dog");
-        });
         Image Pizza = new Image("./Pizza.png");
         ImageView pizzaView = new ImageView(Pizza);
-        pizzaView.setFitWidth(100);
-        pizzaView.setFitHeight(100);
+        pizzaView.setFitWidth(75);
+        pizzaView.setFitHeight(75);
+
+        Text PizzaName = new Text("Pizza");
+        PizzaName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
         Text hargaPizza = new Text("Rp 50.000");
         hargaPizza.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
-        Button Pizza1  = new Button("Pizza");
-        Pizza1.setStyle("-fx-background-color: black; -fx-text-fill: white;");
-        Pizza1.setOnAction(e -> {
-            showOrderConfirmation("Pizza");
-        });
         Image Jasuke = new Image("./Jasuke.png");
         ImageView jasukView = new ImageView(Jasuke);
-        jasukView.setFitWidth(100);
-        jasukView.setFitHeight(100);
+        jasukView.setFitWidth(75);
+        jasukView.setFitHeight(75);
+
+        Text jasukeName = new Text("Jasuke");
+        jasukeName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
         Text hargaJasuke = new Text("Rp 10.000");
         hargaJasuke.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
-        Button Jasuke1  = new Button("Jasuke");
-        Jasuke1.setStyle("-fx-background-color: black; -fx-text-fill: white;");
-        Jasuke1.setOnAction(e -> {
-            showOrderConfirmation("Jasuke");
+        Button tambahpesananButton = new Button("Tambah Pesanan");
+        tambahpesananButton.setStyle("-fx-background-color: black; -fx-text-fill: white;");
+        tambahpesananButton.setOnAction(e -> {
+            primaryStage.setScene(createCategorySelectionPage());
         });
 
         Button backButton = new Button("Kembali");
@@ -192,36 +197,86 @@ public class App extends Application {
             primaryStage.setScene(createCategorySelectionPage());
         });
 
-        HBox layout = new HBox(10);
-        layout.getChildren().addAll(burgerView,hotodogView);
-        layout.setAlignment(Pos.CENTER);
+        Label JumlahBurger = new Label("Jumlah:");
+        TextField inpBurger = new TextField();
+        inpBurger.setStyle("-fx-padding:1px");
 
-        HBox layout1 = new HBox(60);
-        layout1.getChildren().addAll(hargaBurger,hargaHotDog);
-        layout1.setAlignment(Pos.CENTER);
+        VBox vbox1 =new VBox(10);
+        vbox1.getChildren().addAll(BurgerName,hargaBurger);
+        vbox1.setAlignment(Pos.CENTER);
 
-        HBox layout2 = new HBox(10);
-        layout2.getChildren().addAll(Burger1,Hotogod1);
-        layout2.setSpacing(50);
-        layout2.setAlignment(Pos.CENTER);
+        HBox hbox1 = new HBox(10);
+        hbox1.getChildren().addAll(burgerView,vbox1);
+        hbox1.setAlignment(Pos.CENTER);
 
-        HBox layout3 = new HBox(10);
-        layout3.getChildren().addAll(pizzaView,jasukView);
-        layout3.setAlignment(Pos.CENTER);
+        VBox inp1 = new VBox(10);
+        inp1.getChildren().addAll(JumlahBurger,inpBurger);
 
-        HBox layoutPizjas = new HBox(60);
-        layoutPizjas.getChildren().addAll(hargaPizza,hargaJasuke);
-        layoutPizjas.setAlignment(Pos.CENTER);
+        HBox gabungan1 = new HBox(20);
+        gabungan1.getChildren().addAll(hbox1,inp1);
 
-        HBox layout4 = new HBox(20);
-        layout4.getChildren().addAll(Pizza1,Jasuke1);
-        layout4.setSpacing(50);
-        layout4.setAlignment(Pos.CENTER);
+        
+        Label JumlahHotdog = new Label("Jumlah:");
+        TextField inpHotDog = new TextField();
+        inpHotDog.setStyle("-fx-padding:1px");
+
+        VBox vbox2 =new VBox(10);
+        vbox2.getChildren().addAll(HotDogName,hargaHotDog);
+        vbox2.setAlignment(Pos.CENTER);
+
+        HBox hbox2 = new HBox(10);
+        hbox2.getChildren().addAll(hotodogView,vbox2);
+        hbox2.setAlignment(Pos.CENTER);
+
+        VBox inp2 = new VBox(10);
+        inp2.getChildren().addAll(JumlahHotdog,inpHotDog);
+
+        HBox gabungan2 = new HBox(20);
+        gabungan2.getChildren().addAll(hbox2,inp2);
+
+        Label JumlahPizza = new Label("Jumlah:");
+        TextField inpPizza = new TextField();
+        inpHotDog.setStyle("-fx-padding:1px");
+
+        VBox vbox3 =new VBox(10);
+        vbox3.getChildren().addAll(PizzaName,hargaPizza);
+        vbox3.setAlignment(Pos.CENTER);
+
+        HBox hbox3 = new HBox(10);
+        hbox3.getChildren().addAll(pizzaView,vbox3);
+        hbox3.setAlignment(Pos.CENTER);
+
+        VBox inp3 = new VBox(10);
+        inp3.getChildren().addAll(JumlahPizza,inpPizza);
+
+        HBox gabungan3 = new HBox(20);
+        gabungan3.getChildren().addAll(hbox3,inp3);
+
+        Label JumlahJasuke = new Label("Jumlah:");
+        TextField inpJasuke = new TextField();
+        inpHotDog.setStyle("-fx-padding:1px");
+
+        VBox vbox4 =new VBox(10);
+        vbox4.getChildren().addAll(jasukeName,hargaJasuke);
+        vbox4.setAlignment(Pos.CENTER);
+
+        HBox hbox4 = new HBox(10);
+        hbox4.getChildren().addAll(jasukView,vbox4);
+        hbox4.setAlignment(Pos.CENTER);
+
+        VBox inp4 = new VBox(10);
+        inp4.getChildren().addAll(JumlahJasuke,inpJasuke);
+
+        HBox gabungan4 = new HBox(20);
+        gabungan4.getChildren().addAll(hbox4,inp4);
+
+        HBox Tombol1 = new HBox(30);
+        Tombol1.getChildren().addAll(backButton,tambahpesananButton);
 
         VBox mainLayout = new VBox(10);
-        mainLayout.getChildren().addAll(foodTitle, layout,layout1,layout2, layout3,layoutPizjas, layout4,backButton);
+        mainLayout.getChildren().addAll(foodTitle,gabungan1,gabungan2, gabungan3, gabungan4,Tombol1);
         mainLayout.setAlignment(Pos.CENTER);
-        mainLayout.setStyle("-fx-background-color: #FAF2E9;");
+        mainLayout.setStyle("-fx-background-color: #FAF2E9; -fx-padding:20px");
 
         BorderPane pane = new BorderPane();
         pane.setCenter(mainLayout);
@@ -235,54 +290,81 @@ public class App extends Application {
         // Daftar minuman
         Image LemonTea = new Image("./LemonTea.png");
         ImageView lemonTeaView = new ImageView(LemonTea);
-        lemonTeaView.setFitWidth(100);
-        lemonTeaView.setFitHeight(100);
+        lemonTeaView.setFitWidth(75);
+        lemonTeaView.setFitHeight(75);
+
+        Text LemonTeaName = new Text("Lemon Tea");
+        LemonTeaName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
         Text hargaLemontea = new Text("Rp 10.000");
         hargaLemontea.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
-        Button LemonTea1 = new Button("Lemon Tea");
-        LemonTea1.setStyle("-fx-background-color: black; -fx-text-fill: white;");
-        LemonTea1.setOnAction(e -> {
-            showOrderConfirmation("Lemon Tea");
-        });
         Image ThaiTea = new Image("./ThaiTea.png");
         ImageView thaiTeeView = new ImageView(ThaiTea);
-        thaiTeeView.setFitWidth(100);
-        thaiTeeView.setFitHeight(100);
+        thaiTeeView.setFitWidth(75);
+        thaiTeeView.setFitHeight(75);
+
+        Text ThaiTeaName = new Text("Thai Tea");
+        ThaiTeaName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
         Text hargaThaitea = new Text("Rp 10.000");
         hargaThaitea.setFont(Font.font("Arial", FontWeight.BOLD, 10));
-
-        Button ThaiTea1 = new Button("Thai Tea");
-        ThaiTea1.setStyle("-fx-background-color: black; -fx-text-fill: white;");
-        ThaiTea1.setOnAction(e -> {
-            showOrderConfirmation("Thai Tea");
+   
+        Button tambahpesananButton = new Button("Tambah Pesanan");
+        tambahpesananButton.setStyle("-fx-background-color: black; -fx-text-fill: white;");
+        tambahpesananButton.setOnAction(e -> {
+            primaryStage.setScene(createCategorySelectionPage());
         });
 
         Button backButton = new Button("Kembali");
-        backButton.setStyle("-fx-background-color: black; -fx-text-fill: white;");
+        backButton.setStyle("-fx-background-color: black; -fx-text-fill:white");
         backButton.setOnAction(e -> {
             primaryStage.setScene(createCategorySelectionPage());
         });
 
-        HBox layout5 = new HBox(10);
-        layout5.getChildren().addAll(lemonTeaView,thaiTeeView);
-        layout5.setAlignment(Pos.CENTER);
+        Label Jumlahlemontea = new Label("Jumlah:");
+        TextField inplemontea = new TextField();
+        inplemontea.setStyle("-fx-padding:1px");
 
-        HBox layout6 = new HBox(60);
-        layout6.getChildren().addAll(hargaLemontea,hargaThaitea);
-        layout6.setAlignment(Pos.CENTER);
+        VBox vbox5 =new VBox(10);
+        vbox5.getChildren().addAll(LemonTeaName,hargaLemontea);
+        vbox5.setAlignment(Pos.CENTER);
 
-        HBox layout7 = new HBox(10);
-        layout7.getChildren().addAll(LemonTea1,ThaiTea1);
-        layout7.setSpacing(50);
-        layout7.setAlignment(Pos.CENTER);
-       
+        HBox hbox5 = new HBox(10);
+        hbox5.getChildren().addAll(lemonTeaView,vbox5);
+        hbox5.setAlignment(Pos.CENTER);
+
+        VBox inp5 = new VBox(10);
+        inp5.getChildren().addAll(Jumlahlemontea,inplemontea);
+
+        HBox gabungan5 = new HBox(20);
+        gabungan5.getChildren().addAll(hbox5,inp5);
+
+        Label Jumlahthaitea = new Label("Jumlah:");
+        TextField inpthaitea = new TextField();
+        inpthaitea.setStyle("-fx-padding:1px");
+
+        VBox vbox6 =new VBox(10);
+        vbox6.getChildren().addAll(ThaiTeaName,hargaThaitea);
+        vbox6.setAlignment(Pos.CENTER);
+
+        HBox hbox6 = new HBox(10);
+        hbox6.getChildren().addAll(thaiTeeView, vbox6);
+        hbox6.setAlignment(Pos.CENTER);
+   
+        VBox inp6 = new VBox(10);
+        inp6.getChildren().addAll(Jumlahthaitea,inpthaitea);
+
+        HBox gabungan6 = new HBox(20);
+        gabungan6.getChildren().addAll(hbox6,inp6);
+
+        HBox Tombol2 = new HBox(20);
+        Tombol2.getChildren().addAll(backButton,tambahpesananButton);
+
         VBox mainLayout = new VBox(20);
-        mainLayout.getChildren().addAll(drinkTitle,layout5,layout6,layout7,backButton);
+        mainLayout.getChildren().addAll(drinkTitle,gabungan5, gabungan6,Tombol2);
         mainLayout.setAlignment(Pos.CENTER);
-        mainLayout.setStyle("-fx-background-color: #FAF2E9;");
+        mainLayout.setStyle("-fx-background-color: #FAF2E9; -fx-padding:20px");
 
         BorderPane pane = new BorderPane();
         pane.setCenter(mainLayout);
@@ -293,8 +375,8 @@ public class App extends Application {
         private void showOrderConfirmation(String item) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Konfirmasi Pemesanan");
-            alert.setHeaderText("Pemesanan Berhasil");
-            alert.setContentText("Anda telah memesan " + item);
+            alert.setHeaderText(null);
+            alert.setContentText(item);
             alert.showAndWait();
         }
     // Validasi Username
