@@ -141,7 +141,7 @@ public class App extends Application {
         Text foodTitle = new Text("Pilih Makanan");
         foodTitle.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         // Daftar makanan
-        Image Burger = new Image("./Burger.jpgg");
+        Image Burger = new Image("./Burger.jpg");
         ImageView burgerView = new ImageView(Burger);
         burgerView.setFitWidth(75);
         burgerView.setFitHeight(75);
@@ -188,7 +188,7 @@ public class App extends Application {
         Button tambahpesananButton = new Button("Tambah Pesanan");
         tambahpesananButton.setStyle("-fx-background-color: black; -fx-text-fill: white;");
         tambahpesananButton.setOnAction(e -> {
-            primaryStage.setScene(createCategorySelectionPage());
+            primaryStage.setScene(createOrderSummaryPage());
         });
 
         Button backButton = new Button("Kembali");
@@ -283,6 +283,8 @@ public class App extends Application {
 
         return new Scene(pane, 300, 500);
     }
+
+
     // Halaman ke empat (Pilihan Minuman)
     private Scene createDrinkSelectionPage() {
         Text drinkTitle = new Text("Pilih Minuman");
@@ -428,15 +430,48 @@ public class App extends Application {
         pane.setCenter(mainLayout);
 
         return new Scene(pane, 300, 500);
+    } 
+    private Scene createOrderSummaryPage() {
+        Text summaryTitle = new Text("Ringkasan Pesanan");
+        summaryTitle.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+
+        // String foodQuantity;
+        // Text foodQuantityText = new Text("Jumlah Makanan: " + foodQuantity);
+
+        Button pesanLagiButton = new Button("Pesan Lagi");
+        pesanLagiButton.setOnAction(e -> primaryStage.setScene(createCategorySelectionPage()));
+
+        Button checkoutButton = new Button("Checkout");
+        checkoutButton.setOnAction(e -> primaryStage.setScene(createThankYouPage()));
+
+        VBox layout = new VBox(20);
+        layout.getChildren().addAll(summaryTitle,pesanLagiButton, checkoutButton);
+        layout.setAlignment(Pos.CENTER);
+        layout.setStyle("-fx-background-color: #FAF2E9; -fx-padding: 20px");
+
+        BorderPane pane = new BorderPane();
+        pane.setCenter(layout);
+
+        return new Scene(pane, 300, 500);
     }
-        // Konfirmasi Pemesanan (Order Confirmation)
-        private void showOrderConfirmation(String item) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Konfirmasi Pemesanan");
-            alert.setHeaderText(null);
-            alert.setContentText(item);
-            alert.showAndWait();
-        }
+        
+    private Scene createThankYouPage() {
+        Text thankYouText = new Text("Terima kasih atas pesanan Anda!");
+        thankYouText.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+
+        Button selesaiButton = new Button("Selesai");
+        selesaiButton.setOnAction(e -> primaryStage.close());
+
+        VBox layout = new VBox(20);
+        layout.getChildren().addAll(thankYouText, selesaiButton);
+        layout.setAlignment(Pos.CENTER);
+        layout.setStyle("-fx-background-color: #FAF2E9; -fx-padding: 20px");
+
+        BorderPane pane = new BorderPane();
+        pane.setCenter(layout);
+
+        return new Scene(pane, 300, 500);
+    }   
     // Validasi Username
     private boolean validateUsername(String username) {
         // Misalnya, validasi bahwa username harus terdiri dari huruf dan angka saja
