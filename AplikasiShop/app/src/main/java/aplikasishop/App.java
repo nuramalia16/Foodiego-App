@@ -3,9 +3,6 @@
  */
 package aplikasishop;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -27,10 +24,10 @@ import javafx.stage.Stage;
 public class App extends Application {
     private Stage primaryStage;
     
-    Pesanan pesanan1 = new Pesanan("Burger");
-    Pesanan pesanan2 = new Pesanan("Pizza");
-    Pesanan pesanan3 = new Pesanan("Kentang");
-    Pesanan pesanan4 = new Pesanan("Takoyaki");
+    Pesanan pesanan1 = new Pesanan("Burger",25000);
+    Pesanan pesanan2 = new Pesanan("Takoyaki",20000);
+    Pesanan pesanan3 = new Pesanan("Pizza",50000);
+    Pesanan pesanan4 = new Pesanan("Kentang Goreng", 10000);
 
     public static void main(String[] args) {
         launch(args);
@@ -186,11 +183,6 @@ public class App extends Application {
         Text hargaKentang = new Text("Rp 10.000");
         hargaKentang.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
-        Button tambahpesananButton = new Button("Tambah Pesanan");
-        tambahpesananButton.setStyle("-fx-background-color: black; -fx-text-fill: white;");
-        tambahpesananButton.setOnAction(e -> {
-            primaryStage.setScene(createOrderSummaryPage());
-        });
 
         Button backButton = new Button("Kembali");
         backButton.setStyle("-fx-background-color: black; -fx-text-fill: white;");
@@ -200,11 +192,13 @@ public class App extends Application {
 
         Label JumlahBurger = new Label("Jumlah:");
         TextField inpBurger = new TextField();
-        inpBurger.setOnAction(e -> {
-            String quantity = inpBurger.getText();
-            int quantity1 = Integer.parseInt(quantity);
-            pesanan1.setJumlah(quantity1);
-        });
+        inpBurger.setText("0");
+        // inpBurger.setOnAction(e -> {
+        //     String quantity = inpBurger.getText();
+        //     int quan = Integer.parseInt(quantity);
+        //     pesanan1.setJumlah(quantity1);
+        //     primaryStage.setScene(createOrderSummaryPage());
+        // });
         inpBurger.setStyle("-fx-padding:1px");
 
         VBox vbox1 =new VBox(10);
@@ -224,11 +218,12 @@ public class App extends Application {
         
         Label JumlahTakoyaki = new Label("Jumlah:");
         TextField inpTakoyaki = new TextField();
-        inpTakoyaki.setOnAction(e -> {
-            String quantity = inpTakoyaki.getText();
-            int quantity1 = Integer.parseInt(quantity);
-            pesanan2.setJumlah(quantity1);
-        });
+        inpTakoyaki.setText("0");
+        // inpTakoyaki.setOnAction(e -> {
+        //     String quantity = inpTakoyaki.getText();
+        //     int quantity1 = Integer.parseInt(quantity);
+        //     pesanan2.setJumlah(quantity1);
+        // });
         inpTakoyaki.setStyle("-fx-padding:1px");
 
         VBox vbox2 =new VBox(10);
@@ -247,11 +242,12 @@ public class App extends Application {
 
         Label JumlahPizza = new Label("Jumlah:");
         TextField inpPizza = new TextField();
-        inpPizza.setOnAction(e -> {
-            String quantity = inpPizza.getText();
-            int quantity1 = Integer.parseInt(quantity);
-            pesanan3.setJumlah(quantity1);
-        });
+        inpPizza.setText("0");
+        // inpPizza.setOnAction(e -> {
+        //     String quantity = inpPizza.getText();
+        //     int quantity1 = Integer.parseInt(quantity);
+        //     pesanan3.setJumlah(quantity1);
+        // });
         inpPizza.setStyle("-fx-padding:1px");
 
         VBox vbox3 =new VBox(10);
@@ -270,11 +266,12 @@ public class App extends Application {
 
         Label JumlahKentang = new Label("Jumlah:");
         TextField inpKentang = new TextField();
-        inpKentang.setOnAction(e -> {
-            String quantity = inpKentang.getText();
-            int quantity1 = Integer.parseInt(quantity);
-            pesanan4.setJumlah(quantity1);
-        });
+        inpKentang.setText("0");
+        // inpKentang.setOnAction(e -> {
+        //     String quantity = inpKentang.getText();
+        //     int quantity1 = Integer.parseInt(quantity);
+        //     pesanan4.setJumlah(quantity1);
+        // });
         inpKentang.setStyle("-fx-padding:1px");
 
         VBox vbox4 =new VBox(10);
@@ -290,6 +287,24 @@ public class App extends Application {
 
         HBox gabungan4 = new HBox(20);
         gabungan4.getChildren().addAll(hbox4,inp4);
+
+        Button tambahpesananButton = new Button("Tambah Pesanan");
+        tambahpesananButton.setStyle("-fx-background-color: black; -fx-text-fill: white;");
+        tambahpesananButton.setOnAction(e -> {
+            String quantity = inpBurger.getText();
+            int quantity1 = Integer.parseInt(quantity);
+            pesanan1.setJumlah(quantity1);
+            String quantit = inpTakoyaki.getText();
+            int quantit1 = Integer.parseInt(quantit);
+            pesanan2.setJumlah(quantit1);
+            String quanti = inpPizza.getText();
+            int quqnti1 = Integer.parseInt(quanti);
+            pesanan3.setJumlah(quqnti1);
+            String quanti2 = inpKentang.getText();
+            int quan = Integer.parseInt(quanti2);
+            pesanan4.setJumlah(quan);
+            primaryStage.setScene(createOrderSummaryPage());
+        });
 
         HBox Tombol1 = new HBox(30);
         Tombol1.getChildren().addAll(backButton,tambahpesananButton);
@@ -358,7 +373,7 @@ public class App extends Application {
         Button tambahpesananButton = new Button("Tambah Pesanan");
         tambahpesananButton.setStyle("-fx-background-color: black; -fx-text-fill: white;");
         tambahpesananButton.setOnAction(e -> {
-            primaryStage.setScene(createCategorySelectionPage());
+            primaryStage.setScene(createOrderSummaryPage());
         });
 
         Button backButton = new Button("Kembali");
@@ -452,31 +467,104 @@ public class App extends Application {
 
         return new Scene(pane, 300, 500);
     } 
+    // Scene untuk menampilkan pesanan
     private Scene createOrderSummaryPage() {
         Text summaryTitle = new Text("Ringkasan Pesanan");
         summaryTitle.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        Text titel1 = new Text("Daftar Pesanan Burger");
+        titel1.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+        Text pes = new Text("Pesanan :" + pesanan1.nama);
+        Text jum = new Text("Jumlah :" + pesanan1.Jumlah);
+        Text har = new Text("Harga :" + pesanan1.Harga);
+        VBox sc1= new VBox(10);
+        sc1.getChildren().addAll(titel1,pes,jum,har);
+        // System.out.println(pesanan1.Jumlah);
+        Text titel2 = new Text("Daftar Pesanan Takoyaki");
+        titel2.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+        Text pes2 = new Text("Pesanan :" + pesanan2.nama);
+        Text jum2 = new Text("Jumlah :" + pesanan2.Jumlah);
+        Text har2 = new Text("Harga :" + pesanan2.Harga);
+        VBox sc2= new VBox(10);
+        sc2.getChildren().addAll(titel2,pes2,jum2,har2);
+        Text titel3 = new Text("Daftar Pesanan Pizza");
+        titel3.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+        Text pes3 = new Text("Pesanan :" + pesanan3.nama);
+        Text jum3 = new Text("Jumlah :" + pesanan3.Jumlah);
+        Text har3 = new Text("Harga :" + pesanan3.Harga);
+        VBox sc3= new VBox(10);
+        sc3.getChildren().addAll(titel3,pes3,jum3,har3);
+        Text titel4 = new Text("Daftar Pesanan Kentang");
+        titel4.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+        Text pes4 = new Text("Pesanan :" + pesanan4.nama);
+        Text jum4 = new Text("Jumlah :" + pesanan4.Jumlah);
+        Text har4 = new Text("Harga :" + pesanan4.Harga);
+        VBox sc4= new VBox(10);
+        sc4.getChildren().addAll(titel4,pes4,jum4,har4);
 
+        Button placeOrderButton = new Button("Pesan Sekarang");
+        placeOrderButton.setStyle("-fx-background-color: black; -fx-text-fill: white;");
+        placeOrderButton.setOnAction(e -> {
+        // Logika untuk menyimpan pesanan 
+        primaryStage.setScene(createCheckOutPage());
+        });
 
+        Button backButton = new Button("Pesan Lagi");
+        backButton.setStyle("-fx-background-color: black; -fx-text-fill: white;");
+        backButton.setOnAction(e -> primaryStage.setScene(createCategorySelectionPage()));
 
-     
-        // Text foodQuantityText = new Text("Jumlah Makanan: " + pesanan1 );
-        Button pesanLagiButton = new Button("Pesan Lagi");
-        pesanLagiButton.setOnAction(e -> primaryStage.setScene(createCategorySelectionPage()));
+        HBox lay = new HBox(10);
+        lay.getChildren().addAll(placeOrderButton,backButton);
+        lay.setAlignment(Pos.CENTER);
+        lay.setStyle("-fx-background-color: #FAF2E9; -fx-padding:20px");
 
-        Button checkoutButton = new Button("Checkout");
-        checkoutButton.setOnAction(e -> primaryStage.setScene(createThankYouPage()));
+        HBox g = new HBox(10);
+        g.getChildren().addAll(sc1,sc2,sc3,sc4);
+        g.setStyle("-fx-background-color: #FAF2E9; -fx-padding:20px");
 
-        VBox layout = new VBox(20);
-        layout.getChildren().addAll(summaryTitle,pesanLagiButton, checkoutButton);
-        layout.setAlignment(Pos.CENTER);
-        layout.setStyle("-fx-background-color: #FAF2E9; -fx-padding: 20px");
+        VBox g1 = new VBox(10);
+        g1.getChildren().addAll(summaryTitle,g,lay);
+        g1.setAlignment(Pos.CENTER);
 
         BorderPane pane = new BorderPane();
-        pane.setCenter(layout);
+        pane.setCenter(g1);
 
-        return new Scene(pane, 300, 500);
-    }
+        return new Scene(pane, 500, 500);
         
+    }
+    private Scene createCheckOutPage() {
+        Text checkOut = new Text("BIL PESANAN");
+        checkOut.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+
+        Label[] totals = new Label[4];
+        totals[0] = new Label("Total keseluruhan pesanan : " + pesanan1.totalHarga);
+        totals[1] = new Label("Total keseluruhan pesanan : " + pesanan2.totalHarga);
+        totals[2] = new Label("Total keseluruhan pesanan : " + pesanan3.totalHarga);
+        totals[3] = new Label("Total keseluruhan pesanan : " + pesanan4.totalHarga);
+        VBox tot = new VBox(10);
+        // label.getChildren().addAll();
+        for (Label total : totals) {
+            if (!total.getText().equals("Total keseluruhan pesanan :  0")){
+                tot.getChildren().add(total);
+            }             
+        }
+        Button Done = new Button("Selesai");
+        Done.setStyle("-fx-background-color: black; -fx-text-fill: white;");
+        Done.setOnAction(e -> {
+        // Logika untuk menyimpan pesanan dan menampilkan ucapan terima kasih
+        primaryStage.setScene(createThankYouPage());
+        });
+
+        VBox bil = new VBox(20);
+        bil.getChildren().addAll(checkOut,tot,Done);
+        bil.setAlignment(Pos.CENTER);
+        bil.setStyle("-fx-background-color: #FAF2E9; -fx-padding: 20px");
+
+
+        BorderPane pane = new BorderPane();
+        pane.setCenter(bil);
+        return new Scene(pane,300,500);
+        
+    }      
     private Scene createThankYouPage() {
         Text thankYouText = new Text("Terima kasih atas pesanan Anda!");
         thankYouText.setFont(Font.font("Arial", FontWeight.BOLD, 20));
