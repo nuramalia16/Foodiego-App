@@ -201,7 +201,9 @@ public class App extends Application {
         Label JumlahBurger = new Label("Jumlah:");
         TextField inpBurger = new TextField();
         inpBurger.setOnAction(e -> {
-            pesanan1.setJumlah(0);
+            String quantity = inpBurger.getText();
+            int quantity1 = Integer.parseInt(quantity);
+            pesanan1.setJumlah(quantity1);
         });
         inpBurger.setStyle("-fx-padding:1px");
 
@@ -223,7 +225,9 @@ public class App extends Application {
         Label JumlahTakoyaki = new Label("Jumlah:");
         TextField inpTakoyaki = new TextField();
         inpTakoyaki.setOnAction(e -> {
-            pesanan2.setJumlah(0);
+            String quantity = inpTakoyaki.getText();
+            int quantity1 = Integer.parseInt(quantity);
+            pesanan2.setJumlah(quantity1);
         });
         inpTakoyaki.setStyle("-fx-padding:1px");
 
@@ -244,7 +248,9 @@ public class App extends Application {
         Label JumlahPizza = new Label("Jumlah:");
         TextField inpPizza = new TextField();
         inpPizza.setOnAction(e -> {
-            pesanan3.setJumlah(0);
+            String quantity = inpPizza.getText();
+            int quantity1 = Integer.parseInt(quantity);
+            pesanan3.setJumlah(quantity1);
         });
         inpPizza.setStyle("-fx-padding:1px");
 
@@ -265,7 +271,9 @@ public class App extends Application {
         Label JumlahKentang = new Label("Jumlah:");
         TextField inpKentang = new TextField();
         inpKentang.setOnAction(e -> {
-            pesanan4.setJumlah(0);
+            String quantity = inpKentang.getText();
+            int quantity1 = Integer.parseInt(quantity);
+            pesanan4.setJumlah(quantity1);
         });
         inpKentang.setStyle("-fx-padding:1px");
 
