@@ -243,6 +243,9 @@ public class App extends Application {
 
         Label JumlahPizza = new Label("Jumlah:");
         TextField inpPizza = new TextField();
+        inpPizza.setOnAction(e -> {
+            pesanan3.setJumlah(0);
+        });
         inpPizza.setStyle("-fx-padding:1px");
 
         VBox vbox3 =new VBox(10);
@@ -261,6 +264,9 @@ public class App extends Application {
 
         Label JumlahKentang = new Label("Jumlah:");
         TextField inpKentang = new TextField();
+        inpKentang.setOnAction(e -> {
+            pesanan4.setJumlah(0);
+        });
         inpKentang.setStyle("-fx-padding:1px");
 
         VBox vbox4 =new VBox(10);
