@@ -141,49 +141,49 @@ public class App extends Application {
         Text foodTitle = new Text("Pilih Makanan");
         foodTitle.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         // Daftar makanan
-        Image Burger = new Image("./Burger.png");
+        Image Burger = new Image("./Burger.jpgg");
         ImageView burgerView = new ImageView(Burger);
         burgerView.setFitWidth(75);
         burgerView.setFitHeight(75);
 
-        Text BurgerName = new Text("Burger");
+        Text BurgerName = new Text("BURGER");
         BurgerName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
         Text hargaBurger = new Text("Rp 25.000");
         hargaBurger.setFont(Font.font("Arial", FontWeight.BOLD, 10));
         
-        Image Hotodog = new Image("./Hotodog.png");
-        ImageView hotodogView = new ImageView(Hotodog);
-        hotodogView.setFitWidth(75);
-        hotodogView.setFitHeight(75);
+        Image Takoyaki = new Image("./Takoyaki.jpg");
+        ImageView TakoyakiView = new ImageView(Takoyaki);
+        TakoyakiView.setFitWidth(75);
+        TakoyakiView.setFitHeight(75);
 
-        Text HotDogName = new Text("Hot Dog");
-        HotDogName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+        Text TakoyakiName = new Text("TAKOYAKI");
+        TakoyakiName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
-        Text hargaHotDog = new Text("Rp 20.000");
-        hargaHotDog.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+        Text hargaTakoyaki = new Text("Rp 20.000");
+        hargaTakoyaki.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
-        Image Pizza = new Image("./Pizza.png");
+        Image Pizza = new Image("./Pizza.jpg");
         ImageView pizzaView = new ImageView(Pizza);
         pizzaView.setFitWidth(75);
         pizzaView.setFitHeight(75);
 
-        Text PizzaName = new Text("Pizza");
+        Text PizzaName = new Text("PIZZA");
         PizzaName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
         Text hargaPizza = new Text("Rp 50.000");
         hargaPizza.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
-        Image Jasuke = new Image("./Jasuke.png");
-        ImageView jasukView = new ImageView(Jasuke);
-        jasukView.setFitWidth(75);
-        jasukView.setFitHeight(75);
+        Image Kentang = new Image("./Kentang.jpg");
+        ImageView KentangView = new ImageView(Kentang);
+        KentangView.setFitWidth(75);
+        KentangView.setFitHeight(75);
 
-        Text jasukeName = new Text("Jasuke");
-        jasukeName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+        Text KentangName = new Text("KENTANG GORENG");
+        KentangName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
-        Text hargaJasuke = new Text("Rp 10.000");
-        hargaJasuke.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+        Text hargaKentang = new Text("Rp 10.000");
+        hargaKentang.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
         Button tambahpesananButton = new Button("Tambah Pesanan");
         tambahpesananButton.setStyle("-fx-background-color: black; -fx-text-fill: white;");
@@ -216,27 +216,27 @@ public class App extends Application {
         gabungan1.getChildren().addAll(hbox1,inp1);
 
         
-        Label JumlahHotdog = new Label("Jumlah:");
-        TextField inpHotDog = new TextField();
-        inpHotDog.setStyle("-fx-padding:1px");
+        Label JumlahTakoyaki = new Label("Jumlah:");
+        TextField inpTakoyaki = new TextField();
+        inpTakoyaki.setStyle("-fx-padding:1px");
 
         VBox vbox2 =new VBox(10);
-        vbox2.getChildren().addAll(HotDogName,hargaHotDog);
+        vbox2.getChildren().addAll(TakoyakiName,hargaTakoyaki);
         vbox2.setAlignment(Pos.CENTER);
 
         HBox hbox2 = new HBox(10);
-        hbox2.getChildren().addAll(hotodogView,vbox2);
+        hbox2.getChildren().addAll(TakoyakiView,vbox2);
         hbox2.setAlignment(Pos.CENTER);
 
         VBox inp2 = new VBox(10);
-        inp2.getChildren().addAll(JumlahHotdog,inpHotDog);
+        inp2.getChildren().addAll(JumlahTakoyaki, inpTakoyaki);
 
         HBox gabungan2 = new HBox(20);
         gabungan2.getChildren().addAll(hbox2,inp2);
 
         Label JumlahPizza = new Label("Jumlah:");
         TextField inpPizza = new TextField();
-        inpHotDog.setStyle("-fx-padding:1px");
+        inpPizza.setStyle("-fx-padding:1px");
 
         VBox vbox3 =new VBox(10);
         vbox3.getChildren().addAll(PizzaName,hargaPizza);
@@ -252,20 +252,20 @@ public class App extends Application {
         HBox gabungan3 = new HBox(20);
         gabungan3.getChildren().addAll(hbox3,inp3);
 
-        Label JumlahJasuke = new Label("Jumlah:");
-        TextField inpJasuke = new TextField();
-        inpHotDog.setStyle("-fx-padding:1px");
+        Label JumlahKentang = new Label("Jumlah:");
+        TextField inpKentang = new TextField();
+        inpKentang.setStyle("-fx-padding:1px");
 
         VBox vbox4 =new VBox(10);
-        vbox4.getChildren().addAll(jasukeName,hargaJasuke);
+        vbox4.getChildren().addAll(KentangName,hargaKentang);
         vbox4.setAlignment(Pos.CENTER);
 
         HBox hbox4 = new HBox(10);
-        hbox4.getChildren().addAll(jasukView,vbox4);
+        hbox4.getChildren().addAll(KentangView,vbox4);
         hbox4.setAlignment(Pos.CENTER);
 
         VBox inp4 = new VBox(10);
-        inp4.getChildren().addAll(JumlahJasuke,inpJasuke);
+        inp4.getChildren().addAll(JumlahKentang,inpKentang);
 
         HBox gabungan4 = new HBox(20);
         gabungan4.getChildren().addAll(hbox4,inp4);
@@ -288,27 +288,49 @@ public class App extends Application {
         Text drinkTitle = new Text("Pilih Minuman");
         drinkTitle.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         // Daftar minuman
-        Image LemonTea = new Image("./LemonTea.png");
+        Image LemonTea = new Image("./Lemontea.jpg");
         ImageView lemonTeaView = new ImageView(LemonTea);
         lemonTeaView.setFitWidth(75);
         lemonTeaView.setFitHeight(75);
 
-        Text LemonTeaName = new Text("Lemon Tea");
+        Text LemonTeaName = new Text("LEMON TEA");
         LemonTeaName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
         Text hargaLemontea = new Text("Rp 10.000");
         hargaLemontea.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
-        Image ThaiTea = new Image("./ThaiTea.png");
-        ImageView thaiTeeView = new ImageView(ThaiTea);
-        thaiTeeView.setFitWidth(75);
-        thaiTeeView.setFitHeight(75);
+        Image BubbleTea = new Image("./Bubbletea.jpg");
+        ImageView BubbleTeaView = new ImageView(BubbleTea);
+        BubbleTeaView.setFitWidth(75);
+        BubbleTeaView.setFitHeight(75);
 
-        Text ThaiTeaName = new Text("Thai Tea");
-        ThaiTeaName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+        Text BubbleTeaName = new Text("BUBBLE TEA");
+        BubbleTeaName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
 
-        Text hargaThaitea = new Text("Rp 10.000");
-        hargaThaitea.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+        Text hargaBubbleTea = new Text("Rp 15.000");
+        hargaBubbleTea.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+
+        Image IceTea = new Image("./Icetea.jpg");
+        ImageView IceTeaView = new ImageView(IceTea);
+        IceTeaView.setFitWidth(75);
+        IceTeaView.setFitHeight(75);
+
+        Text IceTeaName = new Text("ICE TEA");
+        IceTeaName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+
+        Text hargaIceTea = new Text("Rp 5.000");
+        hargaIceTea.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+
+        Image Mineral = new Image("./Mineralwater.jpg");
+        ImageView MineralView = new ImageView(Mineral);
+        MineralView.setFitWidth(75);
+        MineralView.setFitHeight(75);
+
+        Text MineralName = new Text("MINERAL WATER");
+        MineralName.setFont(Font.font("Arial", FontWeight.BOLD, 10));
+
+        Text hargaMineral = new Text("Rp 5.000");
+        hargaMineral.setFont(Font.font("Arial", FontWeight.BOLD, 10));
    
         Button tambahpesananButton = new Button("Tambah Pesanan");
         tambahpesananButton.setStyle("-fx-background-color: black; -fx-text-fill: white;");
@@ -340,29 +362,65 @@ public class App extends Application {
         HBox gabungan5 = new HBox(20);
         gabungan5.getChildren().addAll(hbox5,inp5);
 
-        Label Jumlahthaitea = new Label("Jumlah:");
-        TextField inpthaitea = new TextField();
-        inpthaitea.setStyle("-fx-padding:1px");
+        Label JumlahBubbletea = new Label("Jumlah:");
+        TextField inpBubbletea = new TextField();
+        inpBubbletea.setStyle("-fx-padding:1px");
 
         VBox vbox6 =new VBox(10);
-        vbox6.getChildren().addAll(ThaiTeaName,hargaThaitea);
+        vbox6.getChildren().addAll(BubbleTeaName,hargaBubbleTea);
         vbox6.setAlignment(Pos.CENTER);
 
         HBox hbox6 = new HBox(10);
-        hbox6.getChildren().addAll(thaiTeeView, vbox6);
+        hbox6.getChildren().addAll(BubbleTeaView, vbox6);
         hbox6.setAlignment(Pos.CENTER);
    
         VBox inp6 = new VBox(10);
-        inp6.getChildren().addAll(Jumlahthaitea,inpthaitea);
+        inp6.getChildren().addAll(JumlahBubbletea,inpBubbletea);
 
         HBox gabungan6 = new HBox(20);
         gabungan6.getChildren().addAll(hbox6,inp6);
+
+        Label JumlahIcetea = new Label("Jumlah:");
+        TextField inpIcetea = new TextField();
+        inpIcetea.setStyle("-fx-padding:1px");
+
+        VBox vbox7 =new VBox(10);
+        vbox7.getChildren().addAll(IceTeaName,hargaIceTea);
+        vbox7.setAlignment(Pos.CENTER);
+
+        HBox hbox7 = new HBox(10);
+        hbox7.getChildren().addAll(IceTeaView, vbox7);
+        hbox7.setAlignment(Pos.CENTER);
+   
+        VBox inp7 = new VBox(10);
+        inp7.getChildren().addAll(JumlahIcetea,inpIcetea);
+
+        HBox gabungan7 = new HBox(20);
+        gabungan7.getChildren().addAll(hbox7,inp7);
+
+        Label JumlahMineral = new Label("Jumlah:");
+        TextField inpMineral = new TextField();
+        inpMineral.setStyle("-fx-padding:1px");
+
+        VBox vbox8 =new VBox(10);
+        vbox8.getChildren().addAll(MineralName,hargaMineral);
+        vbox8.setAlignment(Pos.CENTER);
+
+        HBox hbox8 = new HBox(10);
+        hbox8.getChildren().addAll(MineralView, vbox8);
+        hbox8.setAlignment(Pos.CENTER);
+   
+        VBox inp8 = new VBox(10);
+        inp8.getChildren().addAll(JumlahMineral,inpMineral);
+
+        HBox gabungan8 = new HBox(20);
+        gabungan8.getChildren().addAll(hbox8,inp8);
 
         HBox Tombol2 = new HBox(20);
         Tombol2.getChildren().addAll(backButton,tambahpesananButton);
 
         VBox mainLayout = new VBox(20);
-        mainLayout.getChildren().addAll(drinkTitle,gabungan5, gabungan6,Tombol2);
+        mainLayout.getChildren().addAll(drinkTitle,gabungan5, gabungan6,gabungan7, gabungan8,Tombol2);
         mainLayout.setAlignment(Pos.CENTER);
         mainLayout.setStyle("-fx-background-color: #FAF2E9; -fx-padding:20px");
 
