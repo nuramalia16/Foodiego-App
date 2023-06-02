@@ -26,8 +26,11 @@ import javafx.stage.Stage;
 
 public class App extends Application {
     private Stage primaryStage;
-    private List<String>selectedFoods;
-    private List<String>selectedDrinks;
+    
+    Pesanan pesanan1 = new Pesanan("Burger");
+    Pesanan pesanan2 = new Pesanan("Pizza");
+    Pesanan pesanan3 = new Pesanan("Kentang");
+    Pesanan pesanan4 = new Pesanan("Takoyaki");
 
     public static void main(String[] args) {
         launch(args);
@@ -35,8 +38,6 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        selectedFoods = new ArrayList<>();
-        selectedDrinks = new ArrayList<>();
         primaryStage.setTitle("FoodieGo");
         primaryStage.setScene(createHomePage());
         primaryStage.show();
@@ -199,6 +200,9 @@ public class App extends Application {
 
         Label JumlahBurger = new Label("Jumlah:");
         TextField inpBurger = new TextField();
+        inpBurger.setOnAction(e -> {
+            pesanan1.setJumlah(0);
+        });
         inpBurger.setStyle("-fx-padding:1px");
 
         VBox vbox1 =new VBox(10);
@@ -218,6 +222,9 @@ public class App extends Application {
         
         Label JumlahTakoyaki = new Label("Jumlah:");
         TextField inpTakoyaki = new TextField();
+        inpTakoyaki.setOnAction(e -> {
+            pesanan2.setJumlah(0);
+        });
         inpTakoyaki.setStyle("-fx-padding:1px");
 
         VBox vbox2 =new VBox(10);
@@ -435,9 +442,10 @@ public class App extends Application {
         Text summaryTitle = new Text("Ringkasan Pesanan");
         summaryTitle.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 
-        // String foodQuantity;
-        // Text foodQuantityText = new Text("Jumlah Makanan: " + foodQuantity);
 
+
+     
+        // Text foodQuantityText = new Text("Jumlah Makanan: " + pesanan1 );
         Button pesanLagiButton = new Button("Pesan Lagi");
         pesanLagiButton.setOnAction(e -> primaryStage.setScene(createCategorySelectionPage()));
 
