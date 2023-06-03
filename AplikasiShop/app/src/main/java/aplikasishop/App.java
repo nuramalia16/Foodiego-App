@@ -65,7 +65,7 @@ public class App extends Application {
 
         BorderPane pane = new BorderPane();
         pane.setCenter(layout);
-        return new Scene(pane, 300, 500);
+        return new Scene(pane, 500, 500);
     }
     // Halaman ke dua (Login Page)
     private Scene createLoginPage() {
@@ -108,7 +108,7 @@ public class App extends Application {
 
         BorderPane pane = new BorderPane();
         pane.setCenter(layout);
-        return new Scene(pane, 300, 500);
+        return new Scene(pane, 500, 500);
     }
     // Halaman  ke tiga (Pilihan Kategori)
     private Scene createCategorySelectionPage() {
@@ -137,7 +137,7 @@ public class App extends Application {
 
         BorderPane pane = new BorderPane();
         pane.setCenter(layout);
-        return new Scene(pane, 300, 500);
+        return new Scene(pane, 500, 500);
     }
     // Halaman ke 4 (Pilihan Makanan) 
     private Scene createFoodSelectionPage() {
@@ -283,6 +283,7 @@ public class App extends Application {
 
         HBox Tombol1 = new HBox(30);
         Tombol1.getChildren().addAll(backButton,tambahpesananButton);
+        Tombol1.setAlignment(Pos.CENTER);
 
         VBox mainLayout = new VBox(10);
         mainLayout.getChildren().addAll(foodTitle,gabungan1,gabungan2, gabungan3, gabungan4,Tombol1);
@@ -292,7 +293,7 @@ public class App extends Application {
         BorderPane pane = new BorderPane();
         pane.setCenter(mainLayout);
 
-        return new Scene(pane, 300, 500);
+        return new Scene(pane, 500, 500);
     }
 
     // Halaman ke empat (Pilihan Minuman)
@@ -447,7 +448,7 @@ public class App extends Application {
         BorderPane pane = new BorderPane();
         pane.setCenter(mainLayout);
 
-        return new Scene(pane, 300, 500);
+        return new Scene(pane, 500, 500);
     } 
     // Scene untuk menampilkan pesanan
     private Scene createOrderSummaryPage() {
@@ -471,8 +472,8 @@ public class App extends Application {
                 Text titel1 = new Text("Daftar Pesanan " + total.nama);
                 titel1.setFont(Font.font("Arial", FontWeight.BOLD, 10));
                 // Text pes = new Text("Pesanan :" + pesanan1.nama);
-                Text jum = new Text("Jumlah :" + total.Jumlah);
-                Text har = new Text("Harga :" + total.Harga);
+                Text jum = new Text("Jumlah : " + total.Jumlah);
+                Text har = new Text("Harga : " + "Rp." + total.Harga);
                 VBox sc1= new VBox(10);
                 sc1.getChildren().addAll(titel1,jum,har);
                 g.getChildren().add(sc1);
@@ -526,11 +527,11 @@ public class App extends Application {
         tot.setAlignment(Pos.CENTER);
         for (Pesanan total : Order) {
             if (total.totalHarga != 0) {
-                Label lab = new Label("Total Harga " + total.nama + " : " + String.valueOf(total.totalHarga));
+                Label lab = new Label("Total Harga " + total.nama + " : " + " Rp."+ String.valueOf(total.totalHarga));
                 tot.getChildren().add(lab);
             }           
         }
-        Label JumlahKes = new Label("Jumlah Keseluruhan " + String.valueOf(pesanan1.totalHarga + pesanan2.totalHarga + pesanan3.totalHarga + pesanan4.totalHarga + pesanan5.totalHarga + pesanan6.totalHarga + pesanan7.totalHarga + pesanan8.totalHarga));        
+        Label JumlahKes = new Label("Jumlah Keseluruhan : " + "Rp."  + String.valueOf(pesanan1.totalHarga + pesanan2.totalHarga + pesanan3.totalHarga + pesanan4.totalHarga + pesanan5.totalHarga + pesanan6.totalHarga + pesanan7.totalHarga + pesanan8.totalHarga));        
         Button Done = new Button("Selesai");
         Done.setStyle("-fx-background-color: black; -fx-text-fill: white;");
         Done.setOnAction(e -> {
@@ -545,7 +546,7 @@ public class App extends Application {
 
         BorderPane pane = new BorderPane();
         pane.setCenter(bil);
-        return new Scene(pane,300,500);
+        return new Scene(pane,500,500);
         
     }      
     private Scene createThankYouPage() {
@@ -569,7 +570,7 @@ public class App extends Application {
         BorderPane pane = new BorderPane();
         pane.setCenter(layout);
 
-        return new Scene(pane, 300, 500);
+        return new Scene(pane, 500, 500);
     }   
     // Validasi Username
     private boolean validateUsername(String username) {
