@@ -552,11 +552,17 @@ public class App extends Application {
         Text thankYouText = new Text("Terima kasih atas pesanan Anda!");
         thankYouText.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 
+        Image ThankyouLogo = new Image("./done.jpg");
+        ImageView Thankyouview = new ImageView(ThankyouLogo);
+        Thankyouview.setFitWidth(75);
+        Thankyouview.setFitHeight(75);
+
         Button selesaiButton = new Button("Selesai");
+        selesaiButton.setStyle("-fx-background-color: black; -fx-text-fill: white;");
         selesaiButton.setOnAction(e -> primaryStage.close());
 
         VBox layout = new VBox(20);
-        layout.getChildren().addAll(thankYouText, selesaiButton);
+        layout.getChildren().addAll(thankYouText, Thankyouview , selesaiButton);
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-background-color: #FAF2E9; -fx-padding: 20px");
 
