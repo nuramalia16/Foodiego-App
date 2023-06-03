@@ -6,9 +6,10 @@ public class Pesanan {
     int Harga;
     int totalHarga;
 
-    public Pesanan(String nama,int Harga) {
+    public Pesanan(String nama,int Harga,int Jumlah) {
         this.nama = nama;
         this.Harga = Harga;
+        this.Jumlah = Jumlah;
     }
     public void setJumlah(int jumlaBaru) {
         Jumlah = jumlaBaru;
